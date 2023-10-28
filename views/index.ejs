@@ -1,8 +1,40 @@
-
-
-<ol id="taskList">
-    <!-- Tasks will be added here dynamically -->
-    <%tasks.forEach(function(task){%>
-        <li><h1><%=task%></h1></li>
-        <%});%>
-</ol>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1><%= DATE %></h1>
+    <div class="container">
+        <form action="/" method="post">
+            <input type="text" name="inputcontent" autocomplete="off">
+            <button type="submit">Add</button>
+        </form>
+        <h3>"Enter your tasks"</h3>
+        <ul>
+            <!-- <li>
+                <input type="checkbox" class="task-checkbox" id="checkbox-0">
+                <label for="checkbox-0">Drink water</label>
+            </li>
+            <li>
+                <input type="checkbox" class="task-checkbox" id="checkbox-1">
+                <label for="checkbox-1">Have food</label>
+            </li>
+            <li>
+                <input type="checkbox" class="task-checkbox" id="checkbox-2">
+                <label for="checkbox-2">Time to read</label>
+            </li> -->
+            <%for(let i=0; i<taskss.length ; i++){%>
+                <li class="new-item">
+                    <input type="checkbox" class="task-checkbox" data-index="<%= i %>">
+                    <span><%= taskss[i] %></span>
+                </li>
+            <%}%>
+        </ul>
+        <a href="/clear-tasks">Clear All Tasks</a>
+    </div>
+</body>
+</html>

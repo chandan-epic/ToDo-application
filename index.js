@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import {dirname} from "path";
 import { fileURLToPath } from "url";
+import path from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -13,22 +14,33 @@ app.use(express.urlencoded({extended:true}));
 
 // app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
-
-app.get("/",(req,res)=>{
-  res.sendFile(__dirname + "/public/index.html");
-});
 const tasks=[];
-app.post("/submit",(req,res)=>{
+app.get("/",(req,res)=>{
+  const daytime=[];
+  let date = new Date().toDateString();
+     res.render("index.ejs",{DATE:date,taskss:tasks});
+    //  tasks=[];
+});
 
-    const newTask = req.body.task;
-    const stmt="ENTER SOME TASKS";
-    
-    
-      tasks.push(newTask);
+app.post("/complete-task", (req, res) => {
+  const { index } = req.body; // Get the index of the completed task
+  if (index >= 0 && index < tasks.length) {
+      // Remove the completed task from the tasks array
+      tasks.splice(index, 1);
+  }
+  res.redirect("/");
+});
 
-  
-//   res.json({ tasks });
-res.render("index.ejs",{  tasks: tasks,newtask: newTask });
+// Handle clearing all tasks
+app.get("/clear-tasks", (req, res) => {
+  tasks.length = 0; // Clear all tasks in the array
+  res.redirect("/");
+});
+
+app.post("/",(req,res)=>{
+   let con=req.body.inputcontent;
+   tasks.push(con);
+   res.redirect("/");
 });
 
 app.listen(port,()=>{

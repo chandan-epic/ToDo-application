@@ -1,0 +1,98 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #009688; /* Change the color to your preference */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    color: #3ac4ee;
+    margin-top: 20px;
+    text-align: center; /* Text color for the h1 tag */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 60%;
+}
+
+button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* style.css */
+/* Add a CSS class for the fade-in animation */
+.new-item {
+    opacity: 1; /* Start with 0 opacity (hidden) */
+    transition: opacity 0.5s; /* Use a 0.5s transition for opacity */
+}
+
+/* When the class is added, make it visible with a fade-in effect */
+.new-item.active {
+    opacity: 0; /* Fully visible */
+}
+/* style.css */
+.task {
+    display: flex;
+    align-items: center;
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+
+.task span {
+    flex: 1;
+    text-decoration: none;
+    transition: text-decoration 0.9s; 
+}
+
+.task label {
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+.task-checkbox:checked + span {
+    text-decoration: line-through;  
+}
+
+
+.task-checkbox:checked + label {
+    text-decoration: line-through;
+}
+
+
+
